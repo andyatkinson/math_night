@@ -25,15 +25,14 @@ INSERT INTO my_games (name, game_id) SELECT 'Lucas', id from games where title =
 INSERT INTO my_games (name, game_id) SELECT 'Jane', id from games where title = 'Minecraft Nintendo Switch';
 INSERT INTO my_games (name, game_id) SELECT 'Jane', id from games where title = 'Among Us';
 
--- least expensive
-select title as "least expensive", price from games order by price ASC limit 1;
-
--- most expensive
-select title as "most expensive", price from games order by price DESC limit 1;
-
 -- View all the games by price
 select title, price from games order by price asc;
 
+-- Average price, no rounding
+select avg(price) as "average price" from games;
+
+-- Avergae price, rounded
+select round(avg(price)) as "average rounded" from games;
 
 -- List all owned games
 select my_games.name, games.title, games.price from my_games join games ON my_games.game_id = games.id order by my_games.name;
